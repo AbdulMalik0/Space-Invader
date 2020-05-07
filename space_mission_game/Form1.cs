@@ -70,7 +70,7 @@ namespace space_mission_game
 
         private void go_left_timer1_Tick(object sender, EventArgs e)
         {
-            if (actor_gunner.Left >= 5)
+            if (actor_gunner.Left >= 10)
             {
                 actor_gunner.Left -= background_speed;
             }
@@ -78,7 +78,7 @@ namespace space_mission_game
 
         private void go_right_timer2_Tick(object sender, EventArgs e)
         {
-            if (actor_gunner.Left <= 495) 
+            if (actor_gunner.Left <= 620) 
             {
                 actor_gunner.Left += background_speed;
             }
@@ -86,7 +86,7 @@ namespace space_mission_game
 
         private void go_up_timer3_Tick(object sender, EventArgs e)
         {
-            if(actor_gunner.Top > 5)
+            if(actor_gunner.Top > 10)
             {
                 actor_gunner.Top -= background_speed;
             }
@@ -94,7 +94,7 @@ namespace space_mission_game
 
         private void go_down_timer4_Tick(object sender, EventArgs e)
         {
-            if(actor_gunner.Top <= 695)
+            if(actor_gunner.Top <= 450)
             {
                 actor_gunner.Top += background_speed;
             }
@@ -110,12 +110,22 @@ namespace space_mission_game
             {
                 go_right_timer2.Start();
             }
-
+            if(e.KeyCode == Keys.Up)
+            {
+                go_up_timer3.Start();
+            }
+            if(e.KeyCode == Keys.Down)
+            {
+                go_down_timer4.Start();
+            }
         }
 
         private void main_Form1_KeyUp(object sender, KeyEventArgs e)
         {
-
+            go_left_timer1.Stop();
+            go_right_timer2.Stop();
+            go_up_timer3.Stop();
+            go_down_timer4.Stop();
         }
     }
 }

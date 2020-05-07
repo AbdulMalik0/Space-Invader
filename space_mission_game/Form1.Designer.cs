@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.stars_timer1 = new System.Windows.Forms.Timer(this.components);
-            this.actor_gunner = new System.Windows.Forms.PictureBox();
             this.go_left_timer1 = new System.Windows.Forms.Timer(this.components);
             this.go_right_timer2 = new System.Windows.Forms.Timer(this.components);
             this.go_up_timer3 = new System.Windows.Forms.Timer(this.components);
             this.go_down_timer4 = new System.Windows.Forms.Timer(this.components);
+            this.actor_gunner = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.actor_gunner)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,6 +43,26 @@
             this.stars_timer1.Enabled = true;
             this.stars_timer1.Interval = 10;
             this.stars_timer1.Tick += new System.EventHandler(this.stars_timer1_Tick);
+            // 
+            // go_left_timer1
+            // 
+            this.go_left_timer1.Interval = 5;
+            this.go_left_timer1.Tick += new System.EventHandler(this.go_left_timer1_Tick);
+            // 
+            // go_right_timer2
+            // 
+            this.go_right_timer2.Interval = 5;
+            this.go_right_timer2.Tick += new System.EventHandler(this.go_right_timer2_Tick);
+            // 
+            // go_up_timer3
+            // 
+            this.go_up_timer3.Interval = 5;
+            this.go_up_timer3.Tick += new System.EventHandler(this.go_up_timer3_Tick);
+            // 
+            // go_down_timer4
+            // 
+            this.go_down_timer4.Interval = 5;
+            this.go_down_timer4.Tick += new System.EventHandler(this.go_down_timer4_Tick);
             // 
             // actor_gunner
             // 
@@ -53,30 +73,6 @@
             this.actor_gunner.Size = new System.Drawing.Size(50, 50);
             this.actor_gunner.TabIndex = 0;
             this.actor_gunner.TabStop = false;
-            // 
-            // go_left_timer1
-            // 
-            this.go_left_timer1.Enabled = true;
-            this.go_left_timer1.Interval = 5;
-            this.go_left_timer1.Tick += new System.EventHandler(this.go_left_timer1_Tick);
-            // 
-            // go_right_timer2
-            // 
-            this.go_right_timer2.Enabled = true;
-            this.go_right_timer2.Interval = 5;
-            this.go_right_timer2.Tick += new System.EventHandler(this.go_right_timer2_Tick);
-            // 
-            // go_up_timer3
-            // 
-            this.go_up_timer3.Enabled = true;
-            this.go_up_timer3.Interval = 5;
-            this.go_up_timer3.Tick += new System.EventHandler(this.go_up_timer3_Tick);
-            // 
-            // go_down_timer4
-            // 
-            this.go_down_timer4.Enabled = true;
-            this.go_down_timer4.Interval = 5;
-            this.go_down_timer4.Tick += new System.EventHandler(this.go_down_timer4_Tick);
             // 
             // main_Form1
             // 
