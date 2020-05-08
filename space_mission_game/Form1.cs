@@ -24,20 +24,52 @@ namespace space_mission_game
         }
 
         int bullet_speed ;
-        int background_speed = 6;
+        int background_speed = 4;
         PictureBox [] bckgnd_stars;
         Random stars_pst;
         PictureBox[] bullet;
+        PictureBox[] enemyjets;
+        int enemyspeed = 4;
 
 
         private void main_Form1_Load(object sender, EventArgs e)
         {
 
-            bckgnd_stars = new PictureBox[16];
+            bckgnd_stars = new PictureBox[10];
             stars_pst = new Random();
             bullet = new PictureBox[6];
+            enemyjets = new PictureBox[7];
             bullet_speed = 19;
             string bullet_path = Application.StartupPath + "\\images\\actor_bullet.png";
+            
+            string ene1 = Application.StartupPath + "\\images\\enemy1.png";
+            string ene2 = Application.StartupPath + "\\images\\enemy2.png";
+            string ene3 = Application.StartupPath + "\\images\\enemy3.png";
+            string ene4 = Application.StartupPath + "\\images\\enemy4.png";
+            string ene5 = Application.StartupPath + "\\images\\enemy5.png";
+            string ene6 = Application.StartupPath + "\\images\\enemy6.png";
+            string ene7 = Application.StartupPath + "\\images\\enemy7.png";
+            
+           
+
+            for (int i = 0; i < enemyjets.Length; i++)
+            {
+
+                enemyjets[i] = new PictureBox();
+                enemyjets[i].Size = new Size(50, 50);
+                enemyjets[i].BorderStyle = BorderStyle.None;
+                enemyjets[i].SizeMode = PictureBoxSizeMode.StretchImage;
+                enemyjets[i].Location = new Point((i * 1) * 105, 10);
+
+                this.Controls.Add(enemyjets[i]);
+            }
+                enemyjets[0].Image = Image.FromFile(ene1);
+                enemyjets[1].Image = Image.FromFile(ene2);
+                enemyjets[2].Image = Image.FromFile(ene3);
+                enemyjets[3].Image = Image.FromFile(ene4);
+                enemyjets[4].Image = Image.FromFile(ene5);
+                enemyjets[5].Image = Image.FromFile(ene6);
+                enemyjets[6].Image = Image.FromFile(ene7);
 
             for (int i = 0; i < bullet.Length; i++)
             {
@@ -63,7 +95,7 @@ namespace space_mission_game
                 else
                 {
                     bckgnd_stars[i].Size = new Size(3, 3);
-                    bckgnd_stars[i].BackColor = Color.Moccasin;
+                    bckgnd_stars[i].BackColor = Color.LightGray;
                 }
             this.Controls.Add(bckgnd_stars[i]);
             }
@@ -158,10 +190,45 @@ namespace space_mission_game
                         bullet[i].Visible = true;
                         bullet[i].Top -= bullet_speed;
                 }
-                else
+                else 
                 {
                     bullet[i].Visible = false;
                     bullet[i].Location = new Point(actor_gunner.Location.X + 20, actor_gunner.Location.Y - i * 30);
+                }
+            }
+        }
+
+        private void enemyj_jet_timer1_Tick(object sender, EventArgs e)
+        {
+            for (int i = 0; i < enemyjets.Length; i++)
+            {
+                if (i % 2 == 1)
+                {
+                    enemyjets[i].Top += enemyspeed;
+                    if (enemyjets[i].Top > 550)
+                    {
+                        enemyjets[i].Location = new Point(stars_pst.Next(5, 290), -250);
+                    }
+                }
+                else
+                {
+                    enemyjets[i].Top += enemyspeed - 2;
+                    if (enemyjets[i].Top > 550)
+                    {
+                        enemyjets[i].Location = new Point(stars_pst.Next(300, 630), -250);
+                    }
+                }
+            }
+        }
+
+        private void collition_timer1_Tick(object sender, EventArgs e)
+        {
+            for (int i = 0; i < enemyjets.Length; i++)
+            {
+                if(bullet[0].Bounds.IntersectsWith(enemyjets[i].Bounds) ||
+                    bullet[2].Bounds.IntersectsWith(enemyjets[i].Bounds) || bullet[3].Bounds.IntersectsWith(enemyjets[i].Bounds))
+                {
+                    enemyjets[i].Location = new Point(stars_pst.Next(5, 600), -150);
                 }
             }
         }
