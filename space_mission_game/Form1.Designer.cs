@@ -35,6 +35,7 @@
             this.go_up_timer3 = new System.Windows.Forms.Timer(this.components);
             this.go_down_timer4 = new System.Windows.Forms.Timer(this.components);
             this.actor_gunner = new System.Windows.Forms.PictureBox();
+            this.bullet_timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.actor_gunner)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,6 +75,12 @@
             this.actor_gunner.TabIndex = 0;
             this.actor_gunner.TabStop = false;
             // 
+            // bullet_timer1
+            // 
+            this.bullet_timer1.Enabled = true;
+            this.bullet_timer1.Interval = 20;
+            this.bullet_timer1.Tick += new System.EventHandler(this.bullet_timer1_Tick);
+            // 
             // main_Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -105,6 +112,7 @@
         private System.Windows.Forms.Timer go_right_timer2;
         private System.Windows.Forms.Timer go_up_timer3;
         private System.Windows.Forms.Timer go_down_timer4;
+        private System.Windows.Forms.Timer bullet_timer1;
     }
 }
 

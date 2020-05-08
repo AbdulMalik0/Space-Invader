@@ -1,8 +1,10 @@
-﻿using System;
+﻿using space_mission_game.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,14 +23,32 @@ namespace space_mission_game
 
         }
 
+        int bullet_speed ;
         int background_speed = 6;
         PictureBox [] bckgnd_stars;
         Random stars_pst;
+        PictureBox[] bullet;
+
 
         private void main_Form1_Load(object sender, EventArgs e)
         {
+
             bckgnd_stars = new PictureBox[16];
             stars_pst = new Random();
+            bullet = new PictureBox[6];
+            bullet_speed = 19;
+            string bullet_path = Application.StartupPath + "\\images\\actor_bullet.png";
+
+            for (int i = 0; i < bullet.Length; i++)
+            {
+                bullet[i] = new PictureBox();
+                bullet[i].Image = Image.FromFile(bullet_path);
+                bullet[i].Size = new Size(8, 8);
+                bullet[i].BorderStyle = BorderStyle.None;
+                bullet[i].SizeMode = PictureBoxSizeMode.StretchImage;
+
+                this.Controls.Add(bullet[i]);
+            }
 
             for (int i = 0; i < bckgnd_stars.Length; i++)
             {
@@ -126,6 +146,24 @@ namespace space_mission_game
             go_right_timer2.Stop();
             go_up_timer3.Stop();
             go_down_timer4.Stop();
+
+        }
+
+        private void bullet_timer1_Tick(object sender, EventArgs e)
+        {
+            for (int i = 0; i < bullet.Length; i++)
+            {
+                if (bullet[i].Top > 0)
+                {
+                        bullet[i].Visible = true;
+                        bullet[i].Top -= bullet_speed;
+                }
+                else
+                {
+                    bullet[i].Visible = false;
+                    bullet[i].Location = new Point(actor_gunner.Location.X + 20, actor_gunner.Location.Y - i * 30);
+                }
+            }
         }
     }
 }
