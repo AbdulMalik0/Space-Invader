@@ -31,6 +31,7 @@ namespace space_mission_game
         PictureBox[] enemyjets;
         int enemyspeed = 4;
 
+        PictureBox enemybullet;
 
         private void main_Form1_Load(object sender, EventArgs e)
         {
@@ -40,6 +41,10 @@ namespace space_mission_game
             bullet = new PictureBox[6];
             enemyjets = new PictureBox[7];
             bullet_speed = 19;
+
+            enemybullet = new PictureBox();
+
+
             string bullet_path = Application.StartupPath + "\\images\\actor_bullet.png";
             
             string ene1 = Application.StartupPath + "\\images\\enemy1.png";
